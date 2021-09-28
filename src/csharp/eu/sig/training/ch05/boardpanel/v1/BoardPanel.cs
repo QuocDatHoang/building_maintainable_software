@@ -16,19 +16,19 @@ namespace eu.sig.training.ch05.boardpanel.v1
         /// <param name="y">The y position to start drawing.</param>
         /// <param name="w">The width of this square (in pixels.)</param>
         /// <param name="h">The height of this square (in pixels.)</param>
-        private void Render(Square square, Graphics g, int x, int y, int w, int h)
+        private void Render(Square square, Graphics g, Box box)
         {
-            square.Sprite.Draw(g, x, y, w, h);
+            square.Sprite.Draw(g, box);
             foreach (Unit unit in square.Occupants)
             {
-                unit.Sprite.Draw(g, x, y, w, h);
+                unit.Sprite.Draw(g, box);
             }
         }
         // end::render[]
 
         private class Sprite
         {
-            public void Draw(Graphics g, int x, int y, int w, int h)
+            public void Draw(Graphics g, Box box)
             {
 
             }
@@ -43,6 +43,13 @@ namespace eu.sig.training.ch05.boardpanel.v1
         {
 
             public IList<Unit> Occupants { get; set; }
+        }
+
+        private class Box {
+            public int X { get; set; }
+            public int Y { get; set; }
+            public int Width { get; set; }
+            public int Height { get; set; }
         }
 
     }
